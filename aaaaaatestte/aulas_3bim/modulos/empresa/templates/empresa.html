@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <a href="/empresa/add">Adicionar</a>
+    </div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Editar</th>
+        
+        </tr>
+        {% for e in empresa %}
+        <tr>
+            <td>{{e.nome}}</td>
+            <td>{{e.cidade}}</td>
+            <td><a href="edit/{{e.id_empresa}}">Editar</a></td>
+       
+        
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

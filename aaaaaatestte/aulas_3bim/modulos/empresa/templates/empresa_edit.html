@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/empresa/editsave" method="post">
+            <input type="hidden" name="id_empresa" value="{{empresa.id_empresa}}">
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" value="{{empresa.nome}}" required>
+            </div>
+            <div>
+                <label for="cidade">Cidade: </label>
+                <input type="text" name="cidade" id="cidade" value="{{empresa.cidade}}" required>
+            </div>
+            <button type="submit">Salvar</button>
+    </form>
+
+{% endblock %}
